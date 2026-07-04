@@ -22,7 +22,7 @@ extern "C"
 {
 #endif
 
-    int HasApic(char *fileDir);
+    bool HasApic(char *fileDir);
     enum FORMAT CheckFormat(char *fileDir);
 
 #ifdef __cplusplus
@@ -33,10 +33,6 @@ extern "C"
 
 #ifdef CCOVER_IMAGE_IMPLEMENTATION
 
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-
 static unsigned char ccover__APIC_SPEC[] = {0x41, 0x50, 0x49, 0x43};
 static unsigned char ccover__PNG_SPEC[] = {0x69, 0x6D, 0x61, 0x67, 0x65, 0x2F, 0x70, 0x6E, 0x67};
 
@@ -45,7 +41,7 @@ static unsigned char ccover__PNG_SPEC[] = {0x69, 0x6D, 0x61, 0x67, 0x65, 0x2F, 0
 #include <string.h>
 #include <stdbool.h>
 
-int HasApic(char *fileDir)
+bool HasApic(char *fileDir)
 {
     // reset
     bool hasapic = false;
