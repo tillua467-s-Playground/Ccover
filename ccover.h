@@ -228,15 +228,24 @@ int GetImagePro(char *mp3FileDir, char *sourceFileDir)
 
 void GetImage(char *fileDir)
 {
-    if (CheckFileExist(fileDir))
-    {
-        fprintf(stderr, "File Already exist\n");
-        exit(1);
-    }
     if (CheckFormat(fileDir) == PNG)
+    {
+        if (CheckFileExist("image.png"))
+        {
+            fprintf(stderr, "File Already exist\n");
+            exit(1);
+        }
         GetImagePro(fileDir, "Image.png");
-    else if (CheckFormat(fileDir) == PNG)
+    }
+    else if (CheckFormat(fileDir) == JPG)
+    {
+        if (CheckFileExist("image.png"))
+        {
+            fprintf(stderr, "File Already exist\n");
+            exit(1);
+        }
         GetImagePro(fileDir, "Image.jpg");
+    }
     else
         fprintf(stderr, "No Valid Image Found in the file\n");
 }
