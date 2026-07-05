@@ -7,7 +7,7 @@
 //      just drag and drop this file in your project to get started
 //
 // Status:
-//     - haven't tested compiling as C++
+//     - tested compiling as C++ works fine!
 //     - only extarcts the first APIC image
 //
 //      LICENSE
@@ -186,7 +186,7 @@ int GetImagePro(char *mp3FileDir, char *sourceFileDir)
         if (startIndex != -1 && EndIndex != -1)
         {
             long len = EndIndex - startIndex;
-            coverbin = malloc(len);
+            coverbin = (unsigned char *)malloc(len);
             memcpy(coverbin, buffBin + startIndex, len);
             FILE *srcF = fopen(sourceFileDir, "wb+");
             fwrite(coverbin, len, 1, srcF);
@@ -210,7 +210,7 @@ int GetImagePro(char *mp3FileDir, char *sourceFileDir)
         if (startIndex != -1 && EndIndex != -1)
         {
             long len = EndIndex - startIndex;
-            coverbin = malloc(len);
+            coverbin = (unsigned char *)malloc(len);
             memcpy(coverbin, buffBin + startIndex, len);
             FILE *srcF = fopen(sourceFileDir, "wb+");
             fwrite(coverbin, len, 1, srcF);
